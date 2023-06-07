@@ -81,4 +81,14 @@ public class TopicService {
     public List<Topic> findByDescription(String description){
         return topicRepository.findByDescription(description);
     }
+
+    public void deleteTopic(String id) {
+        topics.removeIf((t) -> t.getId().equals(id));
+
+//        for (int i = 0; i < topics.size(); i++){
+//            if(topics.get(i).getId().equals(id)){
+//                topics.remove(i);
+//            }
+//        }
+    }
 }
