@@ -25,15 +25,26 @@ public class TopicService {
 
     }
 
-    public Topic updateTopicById(String id) {
-        Topic topic = topics.stream().filter((t) -> t.getId().equals(id)).findFirst().get();
+    public void updateTopicById(String id, Topic topic) {
+//        Topic topic1 = topics.stream().filter((t) -> t.getId().equals(id)).findFirst().get();
+//
+//        topic1.setName(topic.getName());
+//        topic1.setId(topic.getId());
+//        topic1.setDescription(topic.getDescription());
 
-        topic.setName("Maths");
-        topic.setId("mat101");
-        topic.setDescription("Study of Equations");
+//        topic.setName("Maths");
+//        topic.setId("mat101");
+//        topic.setDescription("Study of Equations");
 
-        return topic;
+        for(int i =0; i < topics.size(); i++){
+            Topic topic1 = topics.get(i);
 
+            if(topic1.getId().equals(id)){
+                topics.set(i, topic);
+                return;
+            }
+
+        }
     }
 
     public void addTopic(Topic topic) {
