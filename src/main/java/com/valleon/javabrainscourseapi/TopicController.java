@@ -1,8 +1,7 @@
 package com.valleon.javabrainscourseapi;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,10 +26,24 @@ public class TopicController {
         );
     }
 
-
     @GetMapping("/hello")
     public String getGreeting(){
         return "Hi there";
+    }
+
+    @RequestMapping("/topics/{id}")
+    public Topic getTopic(@PathVariable("id") String id){
+        return topicService.getTopicById(id);
+    }
+
+    @PutMapping("/topics/update/{id}")
+    public Topic updateTopic(@PathVariable String id){
+        return topicService.updateTopicById(id);
+    }
+
+    @PostMapping("/topics")
+    public void addTopic(@RequestBody Topic topic){
+         topicService.addTopic(topic);
     }
 }
 
