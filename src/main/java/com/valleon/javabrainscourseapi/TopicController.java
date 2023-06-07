@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TopicController {
@@ -32,7 +33,7 @@ public class TopicController {
     }
 
     @RequestMapping("/topics/{id}")
-    public Topic getTopic(@PathVariable("id") String id){
+    public Optional<Topic> getTopic(@PathVariable("id") String id){
         return topicService.getTopicById(id);
     }
 
@@ -46,7 +47,11 @@ public class TopicController {
          topicService.addTopic(topic);
     }
 
+    @DeleteMapping("/topics/{id}")
+    public void deleteTopic(@PathVariable String id){
+        topicService.deleteTopic(id);
 
+    }
 }
 
 
